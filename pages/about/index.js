@@ -89,7 +89,27 @@ const aboutData = [
 ];
 
 const About = () => {
-  return <div>About</div>;
+  return (<div>
+    {aboutData.map((section, sectionIndex) => (
+      <div key={sectionIndex}>
+        <h2>{section.title}</h2>
+        {section.info.map((infoItem, infoIndex) => (
+          <div key={infoIndex}>
+            <h3>{infoItem.title}</h3>
+            {infoItem.icons ? (
+              <div>
+                {infoItem.icons.map((icon, iconIndex) => (
+                  <span key={iconIndex}>{icon}</span>
+                ))}
+              </div>
+            ) : (
+              <p>{infoItem.stage}</p>
+            )}
+          </div>
+        ))}
+      </div>
+    ))}
+  </div>);
 };
 
 export default About;
